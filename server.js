@@ -35,6 +35,11 @@ const server = http.createServer((req, res) => {
         const id = req.url.split('/')[3]
         deleteProduct(req,res,id)
     }
+    //ERROR routes
+    else {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({message: 'Route Not Found: Please use the api/products endpoint'}))
+    }
 })
 
 //Conexion al puerto
